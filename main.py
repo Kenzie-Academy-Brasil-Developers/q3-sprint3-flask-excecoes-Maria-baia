@@ -57,5 +57,5 @@ def post_database():
         with open(file + 'database.json', 'r') as json_file:
             dados = load(json_file)
             return dados, 201
-    except JSONDecodeError:
+    except (AttributeError and JSONDecodeError):
         return {"wrong fields": [{"nome": type(data['name']).__name__},{"email": type(data['email']).__name__}]}, 400
